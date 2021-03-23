@@ -1,0 +1,8 @@
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\bin\Debug\netcoreapp3.1\BuisnessLogic.deps.json
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\bin\Debug\netcoreapp3.1\BuisnessLogic.dll
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\bin\Debug\netcoreapp3.1\BuisnessLogic.pdb
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.AssemblyInfoInputs.cache
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.AssemblyInfo.cs
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.dll
+C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.pdb

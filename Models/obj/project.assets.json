@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rodge\\Desktop\\PizzaBox\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Users\\Rodge\\Desktop\\PizzaBox\\Models\\Models.csproj",
+      "projectPath": "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\Rodge\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rodge\\Desktop\\PizzaBox\\Models\\obj\\",
+      "outputPath": "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -6,3 +6,17 @@ C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLo
 C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.csproj.CoreCompileInputs.cache
 C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.dll
 C:\Users\Rodge\Desktop\PizzaBox\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.pdb
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\bin\Debug\netcoreapp3.1\BuisnessLogic.deps.json
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\bin\Debug\netcoreapp3.1\BuisnessLogic.dll
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\bin\Debug\netcoreapp3.1\BuisnessLogic.pdb
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\bin\Debug\netcoreapp3.1\Models.dll
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\bin\Debug\netcoreapp3.1\Repository.dll
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\bin\Debug\netcoreapp3.1\Models.pdb
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\bin\Debug\netcoreapp3.1\Repository.pdb
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.csprojAssemblyReference.cache
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.AssemblyInfoInputs.cache
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.AssemblyInfo.cs
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.csproj.CopyComplete
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.dll
+C:\Users\Rodge\Documents\Revature\P1_Pizzaboz\BuisnessLogic\obj\Debug\netcoreapp3.1\BuisnessLogic.pdb

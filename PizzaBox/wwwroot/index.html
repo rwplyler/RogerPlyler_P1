@@ -1,23 +1,24 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 </head>
 <body>
-    <h1>Pizza Box</h1>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="login.html">Log In</a></li>
-                <li><a href="order.html">Create New Order</a></li>
-                <li><a href="viewOrders.html">View Order</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!--add an image-->
-
-    <script src="index.js"></script>
+    <!-- Here a loader is created which
+         loads till response comes -->
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border"
+             role="status" id="loading">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <h1>Registered Employees</h1>
+    <!-- table for showing data -->
+    <table id="employees"></table>
 </body>
 </html>

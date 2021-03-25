@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\Models.csproj": {}
+    "C:\\Users\\Rodge\\Documents\\Revature\\P1_Pizzaboz\\Models\\Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\Models.csproj": {
+    "C:\\Users\\Rodge\\Documents\\Revature\\P1_Pizzaboz\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\Rodge\\Documents\\Revature\\P1_Pizzaboz\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\Models.csproj",
+        "projectPath": "C:\\Users\\Rodge\\Documents\\Revature\\P1_Pizzaboz\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\Rodge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rodge\\Desktop\\rogerplyler_p1\\PizzaBox\\Models\\obj\\",
+        "outputPath": "C:\\Users\\Rodge\\Documents\\Revature\\P1_Pizzaboz\\Models\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\Rodge\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

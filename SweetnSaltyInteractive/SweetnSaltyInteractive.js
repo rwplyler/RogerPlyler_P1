@@ -1,3 +1,10 @@
+let input = document.getElementById("input");
+let start = document.getElementById("start");
+input.style.display = "none";
+function Start(){
+    input.style.display = "block";
+    start.style.display = "none";
+}
 const SNSForm = document.getElementById('SNSform');
 const Output = document.querySelector('.output');
 const SNSbutton = document.querySelector('.SNSbutton');

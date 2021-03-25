@@ -21,16 +21,23 @@ Primary Key(ID));
 Create Table InventoryDetail(
 StoreID int,
 ItemID int,
-Amount int);
+Amount int,
+FOREIGN KEY (StoreID) References Astore(ID),
+FOREIGN KEY (ItemID) References AnItem(ID));
 
 Create Table AOrder(
 OrderID int,
+CustomerID int,
 StoreID int,
 OrderTime DateTime,
 Total Decimal(10,2),
-Primary Key(OrderID));
+Primary Key(OrderID),
+FOREIGN KEY (CustomerID) References ACustomer(ID),
+FOREIGN KEY (StoreID) References AStore(ID));
 
 Create Table AOrderDetail(
 OrderID int,
 ItemID int,
-Total Decimal(10,2));
+Total Decimal(10,2),
+FOREIGN KEY(OrderID) References AOrder(ORDERID),
+FOREIGN KEY(ItemID) References AnItem(ID));

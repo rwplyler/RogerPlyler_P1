@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Repository.Models
+namespace Models
 {
     public partial class Astore
     {

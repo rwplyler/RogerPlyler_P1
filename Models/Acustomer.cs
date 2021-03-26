@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Repository.Models
+namespace Models
 {
     public partial class Acustomer
     {
@@ -13,8 +13,8 @@ namespace Repository.Models
         }
 
         public int Id { get; set; }
-        public int LocationId { get; set; }
-        public string CustomerName { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
 
         public virtual ICollection<Aorder> Aorders { get; set; }
     }

@@ -1,23 +1,27 @@
-﻿const api_url =
-    "api/Acustomer";
+﻿const api_url = "api/Aorder";
 
 // Defining async function
 async function getapi(url) {
 
     // Storing response
-    const response = await fetch(url);
+    fetch(url).then(respons => { return respons.json(); })
+        .then(data => data.forEach(displayOrder));
 
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log(data[0].id);
-    console.log(data);
-    if (response) {
-        hideloader();
-    }
-    show(data[0]);
+
+    //console.log(data[0].id);
+    //console.log(data);
+    //console.log(data);
+    //if (response) {
+    //    hideloader();
+    //}
+    //show(data[0]);
 }
 // Calling that async function
 getapi(api_url);
+
+function displayOrder(item) {
+    console.log(item.orderId);
+}
 
 // Function to hide the loader
 function hideloader() {

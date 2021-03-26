@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Repository.Data;
+
 namespace PizzaBox
 {
     public class Startup
@@ -28,8 +29,14 @@ namespace PizzaBox
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            
             services.AddScoped<ICustomerData, MockCustomerData>();
+
+            services.AddScoped<IItemData, MockItemData>();
+
+            services.AddScoped<IStoreData, MockStoreData>();
+
+            services.AddScoped<IOrderData, MockOrderData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,7 @@
 ﻿var outputFeild = document.getElementById("output");
+var storeInput = document.getElementById("stores");
 
+createStoreOptions();
 function displayOrders(orders) {
     console.log(orders);
     var display = "";
@@ -34,3 +36,10 @@ function viewcustomerorders(id) {
         .then(data => { for (i = 0; i < data.length; i++) { displayOrders(data[i]); } });
 }
 
+
+function createStoreOptions() {
+    fetch('api/Astore')
+        .then(response => response.json())
+        .then(data => { data.forEach(store => storeInput.add(new Option(store.storeName,store.id))); });
+           
+}

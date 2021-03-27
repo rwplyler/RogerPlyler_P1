@@ -43,3 +43,9 @@ function createStoreOptions() {
         .then(data => { data.forEach(store => storeInput.add(new Option(store.storeName,store.id))); });
            
 }
+
+function findCustomer(FirstName, LastName) {
+    fetch('api/Acustomer/' + FirstName + '/' + LastName)
+        .then(response => response.json())
+        .then(data => { viewcustomerorders(data.id); });
+}

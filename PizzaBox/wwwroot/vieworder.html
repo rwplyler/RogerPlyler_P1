@@ -15,8 +15,9 @@
         <input type="submit" value="submit">
     </form>
     <div id="select">
-        <form onsubmit="viewstoreorders(this.storeId.value);return false;">
-            <input type="text" name="storeId"><br><br>
+        <form onsubmit="findCustomer(this.FName.value, this.LName.value); return false;">
+            <input type="text" name="FName"><br><br>
+            <input type="text" name="LName"><br><br>
             <input type="submit" value="Submit">
         </form>
     </div>

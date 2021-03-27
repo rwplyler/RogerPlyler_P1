@@ -16,6 +16,8 @@ namespace Repository.Data
 
         Acustomer GetCustomer(int id);
 
+        Acustomer GetCustomer(string fname, string lname);
+
         Acustomer AddCustomer(Acustomer customer);
 
         void DeleteCustomer(Acustomer customer);

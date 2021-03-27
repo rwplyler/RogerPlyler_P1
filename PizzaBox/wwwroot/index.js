@@ -1,49 +1,22 @@
-﻿const api_url = "api/Aorder";
+﻿
 
-// Defining async function
-async function getapi(url) {
+function testJSON() {
+    const bodies = {
+        fname: "Roger",
+        lname: "Plyler"
+    };
 
-    // Storing response
-    fetch(url).then(respons => { return respons.json(); })
-        .then(data => data.forEach(displayOrder));
-
-
-    //console.log(data[0].id);
-    //console.log(data);
-    //console.log(data);
-    //if (response) {
-    //    hideloader();
-    //}
-    //show(data[0]);
-}
-// Calling that async function
-getapi(api_url);
-
-function displayOrder(item) {
-    console.log(item.orderId);
+    fetch('api/Acustomer', {
+        method: 'POST',
+        body: JSON.stringify(bodies),
+        headers: { 'Content-Type': 'application/json' },
+    })
+        .then(res => res.json())
+        .then(json => console.log(json));
 }
 
-// Function to hide the loader
-function hideloader() {
-    document.getElementById('loading').style.display = 'none';
-}
-// Function to define innerHTML for HTML table
-function show(r) {
-    let tab =
-        `<tr>
-          <th>ID</th>
-          <th>CustomerName</th>
-          <th>Location ID</th>
-         </tr>`;
+testJSON();
 
-    // Loop to access all rows 
-
-        tab += `<tr> 
-    <td>${r.id} </td>
-    <td>${r.customerName}</td>
-    <td>${r.locationId}</td>  
-</tr>`;
-    
-    // Setting innerHTML as tab variable
-    document.getElementById("employees").innerHTML = tab;
-}
+fetch('api/Ainventorydetail')
+    .then(response => { response.json(); })
+    .then(data => { console.log(data); });

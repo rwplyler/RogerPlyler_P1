@@ -37,6 +37,8 @@ namespace PizzaBox
             services.AddScoped<IStoreData, MockStoreData>();
 
             services.AddScoped<IOrderData, MockOrderData>();
+
+            services.AddScoped<IOrderDetail, MockOrderDetails>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

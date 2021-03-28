@@ -7,6 +7,11 @@ namespace Models
 {
     public partial class Aorder
     {
+        public Aorder()
+        {
+            AorderDetails = new HashSet<AorderDetail>();
+        }
+
         public int OrderId { get; set; }
         public int? CustomerId { get; set; }
         public int? StoreId { get; set; }
@@ -15,5 +20,6 @@ namespace Models
 
         public virtual Acustomer Customer { get; set; }
         public virtual Astore Store { get; set; }
+        public virtual ICollection<AorderDetail> AorderDetails { get; set; }
     }
 }

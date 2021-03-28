@@ -29,7 +29,7 @@ namespace Repository
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Project1;Trusted_Connection=True;");
             }
         }
@@ -104,9 +104,11 @@ namespace Repository
 
             modelBuilder.Entity<AorderDetail>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("AOrderDetail");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("ID");
 
                 entity.Property(e => e.ItemId).HasColumnName("ItemID");
 
@@ -115,14 +117,14 @@ namespace Repository
                 entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
 
                 entity.HasOne(d => d.Item)
-                    .WithMany()
+                    .WithMany(p => p.AorderDetails)
                     .HasForeignKey(d => d.ItemId)
-                    .HasConstraintName("FK__AOrderDet__ItemI__1CF15040");
+                    .HasConstraintName("FK__AOrderDet__ItemI__3B75D760");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany()
+                    .WithMany(p => p.AorderDetails)
                     .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__AOrderDet__Order__1BFD2C07");
+                    .HasConstraintName("FK__AOrderDet__Order__3A81B327");
             });
 
             modelBuilder.Entity<Astore>(entity =>
@@ -140,23 +142,28 @@ namespace Repository
 
             modelBuilder.Entity<InventoryDetail>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.InventoryId)
+                    .HasName("PK__Inventor__F5FDE6D3469D7681");
 
                 entity.ToTable("InventoryDetail");
+
+                entity.Property(e => e.InventoryId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("InventoryID");
 
                 entity.Property(e => e.ItemId).HasColumnName("ItemID");
 
                 entity.Property(e => e.StoreId).HasColumnName("StoreID");
 
                 entity.HasOne(d => d.Item)
-                    .WithMany()
+                    .WithMany(p => p.InventoryDetails)
                     .HasForeignKey(d => d.ItemId)
-                    .HasConstraintName("FK__Inventory__ItemI__164452B1");
+                    .HasConstraintName("FK__Inventory__ItemI__37A5467C");
 
                 entity.HasOne(d => d.Store)
-                    .WithMany()
+                    .WithMany(p => p.InventoryDetails)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Inventory__Store__15502E78");
+                    .HasConstraintName("FK__Inventory__Store__36B12243");
             });
 
             OnModelCreatingPartial(modelBuilder);

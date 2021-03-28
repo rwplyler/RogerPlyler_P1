@@ -129,14 +129,18 @@ function pendingRemove(cartID) {
 
 function submitOrder() {
     fetch('api/aorder/' + customerID + '/' + storenum + '/' + total)
-        .then(response => response.json)
-        .then(data => { console.log(data); submitCart(data.orderID); });
+        .then(response => response.json())
+        .then(data => { console.log(data); submitCart(data.orderId); });
 
 }
 
 function submitCart(orderNum) {
-    fullCart.forEach(item => { 
-        
+    console.log(orderNum);
+    fullCart.forEach(item => {
+        console.log(item);
+        fetch('api/aorderDetail/submit/' + orderNum + '/' + item.itemId + '/' + item.amount)
+            .then(response => response.json())
+            .then(data => { console.log(data); })
     });
 }
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace BuisnessLogic
 {
@@ -28,6 +29,30 @@ namespace BuisnessLogic
             context.Aorders.Add(order);
             context.SaveChanges();
             return order;
+        }
+
+        public decimal NewOrderDetail(int orderNum, int itemNum, int amount)
+        {
+            Aorder getorder = context.Aorders.FirstOrDefault(o=> o.OrderId == orderNum);
+            List<InventoryDetail> inventory = context.InventoryDetails.ToList();
+            inventory.Find(i => getorder.StoreId == i.StoreId && itemNum == i.ItemId).Amount -= amount;
+            context.InventoryDetails.Update(inventory.Find(i => getorder.StoreId == i.StoreId && itemNum == i.ItemId));
+            context.SaveChanges();
+           
+                AorderDetail newDetail = new AorderDetail()
+            {
+               Id = ((context.AorderDetails.Any(o => o.Id == 1)) ? context.AorderDetails.Max(o => o.Id) + 1 : 1),
+                OrderId = orderNum,
+                ItemId = itemNum,
+                Total = Convert.ToDecimal(amount)
+
+            };
+            
+            context.AorderDetails.Add(newDetail);
+            context.SaveChanges();
+            
+
+            return 0.0m;
         }
 
         

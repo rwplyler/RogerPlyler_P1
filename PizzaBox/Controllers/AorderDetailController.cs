@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
 using Repository.Data;
+using BuisnessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,15 @@ namespace PizzaBox.Controllers
         {
             orderDetails.AddOrderDetail(newOrderDetail);
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("api/[controller]/submit/{ordernum}/{itemnum}/{amount}")]
+        public IActionResult addOrderDetails(int ordernum,int itemnum,int amount)
+        {
+            Logic buis = new Logic();
+            buis.NewOrderDetail(ordernum, itemnum, amount);
+            return Ok(100);
         }
     }
 }

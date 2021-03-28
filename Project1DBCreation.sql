@@ -19,11 +19,14 @@ Price decimal(10,2),
 Primary Key(ID));
 
 Create Table InventoryDetail(
+InventoryID int,
 StoreID int,
 ItemID int,
 Amount int,
+Primary Key(InventoryID),
 FOREIGN KEY (StoreID) References Astore(ID),
-FOREIGN KEY (ItemID) References AnItem(ID));
+FOREIGN KEY (ItemID) References AnItem(ID)
+);
 
 Create Table AOrder(
 OrderID int,
@@ -36,8 +39,10 @@ FOREIGN KEY (CustomerID) References ACustomer(ID),
 FOREIGN KEY (StoreID) References AStore(ID));
 
 Create Table AOrderDetail(
+ID int,
 OrderID int,
 ItemID int,
 Total Decimal(10,2),
+Primary Key(ID),
 FOREIGN KEY(OrderID) References AOrder(ORDERID),
 FOREIGN KEY(ItemID) References AnItem(ID));

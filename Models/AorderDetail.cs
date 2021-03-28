@@ -7,6 +7,7 @@ namespace Models
 {
     public partial class AorderDetail
     {
+        public int Id { get; set; }
         public int? OrderId { get; set; }
         public int? ItemId { get; set; }
         public decimal? Total { get; set; }

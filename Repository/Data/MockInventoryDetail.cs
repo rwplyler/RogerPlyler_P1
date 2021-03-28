@@ -43,6 +43,14 @@ namespace Repository.Data
             throw new NotImplementedException();
         }
 
-        
+        public List<InventoryDetail> GetInventoryStore(int id)
+        {
+            return stockData.FindAll(i => i.StoreId == id);
+        }
+
+        public InventoryDetail GetInventoryItem(int itemid, int storeid)
+        {
+            return stockData.Find(i => i.StoreId == storeid && i.ItemId == itemid);
+        }
     }
 }

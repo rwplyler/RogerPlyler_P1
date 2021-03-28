@@ -12,5 +12,10 @@ namespace Repository.Data
         InventoryDetail AddInventoryDetail(int itemNumber, int storeNumber, int stockNumber);
 
         List<InventoryDetail> GetInventoryDetails();
+
+        List<InventoryDetail> GetInventoryStore(int id);
+
+        InventoryDetail GetInventoryItem(int itemid, int storeid);
+
     }
 }

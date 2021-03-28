@@ -23,5 +23,19 @@ namespace PizzaBox.Controllers
             return Ok(inventorydetaildata.GetInventoryDetails());
         }
 
+        [HttpGet]
+        [Route("api/[controller]/{id}")]
+        public IActionResult GetStoreInventory(int id)
+        {
+            return Ok(inventorydetaildata.GetInventoryStore(id));
+        }
+
+        [HttpGet]
+        [Route("api/[controller]/{id}/{storeid}")]
+        public IActionResult GetStoreItemInventory(int id, int storeid)
+        {
+            return Ok(inventorydetaildata.GetInventoryItem(id, storeid));
+        }
+
     }
 }

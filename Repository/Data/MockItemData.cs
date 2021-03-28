@@ -15,7 +15,7 @@ namespace Repository.Data
             },
             new AnItem(){
             Id = 2,
-            ItemName = "Playstation",
+            ItemName = "Xbox",
             Price = 500.00m
             }
             };
@@ -23,6 +23,11 @@ namespace Repository.Data
         public List<AnItem> GetItems()
         {
             return items;
+        }
+
+        public AnItem GetItem(int id)
+        {
+            return items.Find(i => i.Id == id);
         }
     }
 }

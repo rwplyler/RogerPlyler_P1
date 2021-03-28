@@ -13,10 +13,11 @@ function testJSON() {
     })
         .then(res => res.json())
         .then(json => console.log(json));
+
+    fetch('api/Ainventorydetail')
+        .then(response =>response.json())
+        .then(data => { console.log(data); });
 }
 
 testJSON();
 
-fetch('api/Ainventorydetail')
-    .then(response => { response.json(); })
-    .then(data => { console.log(data); });

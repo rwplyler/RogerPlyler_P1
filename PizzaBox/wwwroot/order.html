@@ -22,6 +22,34 @@
         </form>
     </div>
     <div id="output"></div>
+
+    <form onsubmit="pendingCart(this.addItem.value);return false;">
+        <label for="items">Add Item To Cart</label>
+        <select id="items" name="addItem">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+    <form onsubmit="addToCart(this.amount.value);return false;">
+        <label for="amount">Add Item To Cart</label>
+        <select id="amount" name="amount">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+
+    <form onsubmit="pendingRemove(this.addItem.value);return false;">
+        <label for="cart">Add Item To Cart</label>
+        <select id="cart" name="removeItem">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+    <form onsubmit="removeFromCart(this.amount.value);return false;">
+        <label for="remove">Add Item To Cart</label>
+        <select id="remove" name="remove">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+
+
     <script src="order.js"></script>
 </body>
 </html>

@@ -8,5 +8,7 @@ namespace Repository.Data
     public interface IItemData
     {
         List<AnItem> GetItems();
+
+        AnItem GetItem(int id);
     }
 }

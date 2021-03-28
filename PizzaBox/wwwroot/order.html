@@ -3,18 +3,52 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    
 </head>
 <body>
 
-    <form id="loginform" method="POST">
-        <label for="loginfname">First Name:</label>
-        <input type="text" name="fname" id="loginfname" autocomplete="off" placeholder="First Name">
-        <label for="loginlname">First Name:</label>
-        <input type="text" name="lname" id="loginlname" autocomplete="off" placeholder="Last Name">
-        <input type="submit" value="Send">
+    <form onsubmit="viewstores(this.chooseStore.value);return false;">
+        <label for="stores">Select a store to view</label>
+        <select id="stores" name="chooseStore">
+        </select>
+        <input type="submit" value="submit">
     </form>
 
-    <div class="responseFromLogin"></div>
+    <div id="select">
+        <form onsubmit="findCustomer(this.FName.value, this.LName.value); return false;">
+            <input type="text" name="FName"><br><br>
+            <input type="text" name="LName"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="output"></div>
+
+    <form onsubmit="pendingCart(this.addItem.value);return false;">
+        <label for="items">Add Item To Cart</label>
+        <select id="items" name="addItem">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+    <form onsubmit="addToCart(this.amount.value);return false;">
+        <label for="amount">Add Item To Cart</label>
+        <select id="amount" name="amount">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+
+    <form onsubmit="pendingRemove(this.addItem.value);return false;">
+        <label for="cart">Add Item To Cart</label>
+        <select id="cart" name="removeItem">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+    <form onsubmit="removeFromCart(this.amount.value);return false;">
+        <label for="remove">Add Item To Cart</label>
+        <select id="remove" name="remove">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+
 
     <script src="order.js"></script>
 </body>

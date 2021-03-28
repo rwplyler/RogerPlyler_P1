@@ -36,10 +36,23 @@ namespace PizzaBox.Controllers
             return NotFound("Customer Not Found");
         }
 
+        [HttpGet]
+        [Route("api/[controller]/{fname}/{lname}")]
+        public IActionResult GetCustomer(string fname,string lname)
+        {
+            var customer = customerData.GetCustomer(fname,lname);
+            if (customer != null)
+            {
+                return Ok(customer);
+            }
+            return NotFound("Customer Not Found");
+        }
+
         [HttpPost]
         [Route("api/[controller]")]
         public IActionResult GetCustomer(Acustomer customer)
         {
+            //return Ok(customerData.GetCustomers());
             var checkCust = customerData.GetCustomer(customer);
             if(checkCust != null)
             {

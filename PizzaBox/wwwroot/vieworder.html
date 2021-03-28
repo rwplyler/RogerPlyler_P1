@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    
+</head>
+<body>
+
+    <form onsubmit="viewstoreorders(this.chooseStore.value);return false;">
+        <label for="stores" >Select a store to view</label>
+        <select id="stores" name="chooseStore">
+            
+        </select>
+        <input type="submit" value="submit">
+    </form>
+    <div id="select">
+        <form onsubmit="findCustomer(this.FName.value, this.LName.value); return false;">
+            <input type="text" name="FName"><br><br>
+            <input type="text" name="LName"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="output"></div>
+    <script src="vieworder.js"></script>
+</body>
+</html>

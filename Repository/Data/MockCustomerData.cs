@@ -53,6 +53,11 @@ namespace Repository.Data
             return customers;
         }
 
+        public Acustomer GetCustomer(string fname, string lname)
+        {
+            return customers.Find(c => c.Fname == fname && c.Lname == lname);
+        }
+
         public Acustomer GetCustomer(Acustomer customer)
         {
             return customers.Find(c => c.Fname == customer.Fname && c.Lname == customer.Lname);
@@ -64,5 +69,7 @@ namespace Repository.Data
             customers.Remove(cust);
             return cust;
         }
+
+        
     }
 }

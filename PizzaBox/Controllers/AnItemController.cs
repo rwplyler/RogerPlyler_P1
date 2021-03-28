@@ -18,9 +18,18 @@ namespace PizzaBox.Controllers
 
         [HttpGet]
         [Route("api/[controller]")]
-        public IActionResult GetCustomers()
+        public IActionResult GetItems()
         {
             return Ok(itemData.GetItems());
         }
+
+        [HttpGet]
+        [Route("api/[controller]/{id}")]
+        public IActionResult GetItem(int id)
+        {
+            return Ok(itemData.GetItem(id));
+        }
+
+        
     }
 }

@@ -21,6 +21,13 @@ namespace Repository.Data
                 StoreId = 2,
                 OrderTime = DateTime.Now,
                 Total = 400.00m
+            },
+            new Aorder{
+                OrderId = 3,
+                CustomerId = 2,
+                StoreId = 1,
+                OrderTime = DateTime.Now,
+                Total = 400.00m
             }
 
         };

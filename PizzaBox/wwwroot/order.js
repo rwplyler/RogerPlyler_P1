@@ -1,22 +1,22 @@
 ﻿var customerID;
 var storenum;
-var total;
+var total = 0.00;
 var itemPrice = [0.00];
 var itemID = [0];
 var pendingItem = 0;
+var pendingRemoveItem = 0;
+
+var FirstName = "";
+var LastName = "";
 
 //item that will persist the Cart;
 var fullCart = [];
 
 class Cart{
-    constructor(cartItem, cartAmount,storeID) {
-        this.cartItem = cartItem;
-        this.cartAmount = cartAmount;
-        this.storeID = storeID;
-
-        this.getName = function () {
-            return "User's name: " + this.firstName + " " + this.lastName;
-        }
+    constructor(itemId, amount,storeId) {
+        this.itemId = itemId;
+        this.amount = amount;
+        this.storeId = storeId;
     }
 }
 
@@ -27,6 +27,7 @@ var storeInput = document.getElementById("stores");
 var itemInput = document.getElementById("items");
 var amountInput = document.getElementById("amount");
 var cartInput = document.getElementById("cart");
+var removeInput = document.getElementById("remove");
 
 function createStoreOptions() {
     fetch('api/Astore')
@@ -39,11 +40,14 @@ createStoreOptions();
 function findCustomer(FirstName, LastName) {
     fetch('api/Acustomer/' + FirstName + '/' + LastName)
         .then(response => response.json())
-        .then(data => { console.log(data); });
+        .then(data => { console.log(data); customerID = data.id; });
 }
 
 function viewstores(id) {
     storenum = id;
+    itemInput.innerHTML = "";
+    fullCart = [];
+    cartInput.innerHTML = "";
     fetch('api/Ainventorydetail/' + id)
         .then(response => response.json())
         .then(data => { addToInventory(data); })
@@ -63,12 +67,20 @@ function addToInventory(stock) {
 
 function pendingCart(itemNum) {
     pendingItem = itemNum;
+    var alreadyInCart = 0;
+    for (i = 0; i < fullCart.length; i++) {
+        console.log("cartID " +fullCart[i].itemId);
+        if (itemNum == fullCart[i].itemId) {
+            alreadyInCart = fullCart[i].amount;
+        }
+    }
+    console.log("already in cart" + alreadyInCart);
     itemAmount = 0;
     fetch('api/Ainventorydetail/' + itemNum + '/' + storenum)
         .then(response => response.json())
         .then(data => {
             itemAmount = data.amount;
-            for (i = 1; i <= itemAmount; i++) {
+            for (i = 1; i <= (itemAmount - alreadyInCart); i++) {
                 amountInput.add(new Option(i, i));
             }
         });
@@ -78,17 +90,53 @@ function pendingCart(itemNum) {
 
 function addToCart(amount) {
     var newItem = new Cart(pendingItem, amount, storenum);
-    fullCart.push(newItem);
+    var inCartAlready = -1;
+    for (i = 0; i < fullCart.length; i++) {
+        if (pendingItem == fullCart[i].itemId)
+        {
+            console.log("Found in cart");
+            inCartAlready = i;
+        }
+    }
+    if (inCartAlready == -1) {
+        fullCart.push(newItem);
+    } else {
+        fullCart[inCartAlready].amount += amount;
+    }
     console.log(fullCart);
     updateCart();
+    amountInput.innerHTML = "";
 
 }
 
 function updateCart() {
-    
+    cartInput.innerHTML = "";
     for (i = 0; i < fullCart.length; i++) {
-        cartInput.add(new Option(fullCart[i].cartItem, i));
+        cartInput.add(new Option(fullCart[i].itemId, i));
         }
 
+}
+
+function pendingRemove(cartID) {
+    console.log("cart ID " + cartID);
+    var tempItem = fullCart[cartID];
+    pendingRemoveItem = cartID;
+    for (i = 0; i <=tempItem.amount ; i++) {
+        removeInput.add(new Option(i, i));
+    }
+
+}
+
+function submitOrder() {
+    fetch('api/aorder/' + customerID + '/' + storenum + '/' + total)
+        .then(response => response.json)
+        .then(data => { console.log(data); submitCart(data.orderID); });
+
+}
+
+function submitCart(orderNum) {
+    fullCart.forEach(item => { 
+        
+    });
 }
 

@@ -31,18 +31,20 @@ namespace PizzaBox
             services.AddControllers();
             
             //MockDataScoped
+            //services.AddScoped<ICustomerData, MockCustomerData>();
+            //services.AddScoped<IItemData, MockItemData>();
+            //services.AddScoped<IStoreData, MockStoreData>();
+            //services.AddScoped<IOrderData, MockOrderData>();
+            //services.AddScoped<IOrderDetail, MockOrderDetails>();
+            //services.AddScoped<IInventoryDetail, MockInventoryDetail>();
 
-            services.AddScoped<ICustomerData, MockCustomerData>();
-
-            services.AddScoped<IItemData, MockItemData>();
-
-            services.AddScoped<IStoreData, MockStoreData>();
-
-            services.AddScoped<IOrderData, MockOrderData>();
-
-            services.AddScoped<IOrderDetail, MockOrderDetails>();
-
-            services.AddScoped<IInventoryDetail, MockInventoryDetail>();
+            //Actual Data
+            services.AddScoped<ICustomerData, AcustomerData>();
+            services.AddScoped<IItemData, AitemData>();
+            services.AddScoped<IStoreData, AstoreData>();
+            services.AddScoped<IOrderData, AorderData>();
+            services.AddScoped<IInventoryDetail, AinventoryData>();
+            services.AddScoped<IOrderDetail, AorderdetailData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

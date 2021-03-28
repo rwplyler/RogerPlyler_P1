@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuisnessLogic;
 
 namespace PizzaBox.Controllers
 {
@@ -35,6 +36,22 @@ namespace PizzaBox.Controllers
         public IActionResult GetOrdersCustomer(int id)
         {
             return Ok(orderData.GetOrdersByCustomer(id));
+        }
+
+        [HttpGet]
+        [Route("api/[controller]/{custID}/{storeID}/{total}")]
+        public IActionResult CreateNewOrder(int custID,int StoreID, decimal total)
+        {
+            Logic buis = new Logic();
+            var order = buis.NewOrder(custID,StoreID,total);
+            if(order != null)
+            {
+                return Ok(order);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

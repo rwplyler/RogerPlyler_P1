@@ -7,13 +7,6 @@
 </head>
 <body>
 
-    <form onsubmit="viewstores(this.chooseStore.value);return false;">
-        <label for="stores">Select a store to view</label>
-        <select id="stores" name="chooseStore">
-        </select>
-        <input type="submit" value="submit">
-    </form>
-
     <div id="select">
         <form onsubmit="findCustomer(this.FName.value, this.LName.value); return false;">
             <input type="text" name="FName"><br><br>
@@ -22,6 +15,15 @@
         </form>
     </div>
     <div id="output"></div>
+
+    <form onsubmit="viewstores(this.chooseStore.value);return false;">
+        <label for="stores">Select a store to view</label>
+        <select id="stores" name="chooseStore">
+        </select>
+        <input type="submit" value="submit">
+    </form>
+
+
 
     <form onsubmit="pendingCart(this.addItem.value);return false;">
         <label for="items">Add Item To Cart</label>

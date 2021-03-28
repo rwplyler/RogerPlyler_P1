@@ -36,17 +36,22 @@
         <input type="submit" value="submit">
     </form>
 
-    <form onsubmit="pendingRemove(this.addItem.value);return false;">
+    <form onsubmit="pendingRemove(this.removeItem.value);return false;">
         <label for="cart">Add Item To Cart</label>
         <select id="cart" name="removeItem">
         </select>
         <input type="submit" value="submit">
     </form>
-    <form onsubmit="removeFromCart(this.amount.value);return false;">
+    <form onsubmit="removeFromCart(this.remove.value);return false;">
         <label for="remove">Add Item To Cart</label>
         <select id="remove" name="remove">
         </select>
         <input type="submit" value="submit">
+    </form>
+
+    <form onsubmit="submitOrder();return false;">
+        <label for="remove">Submit Order</label>
+        <input type="submit" name="order" />
     </form>
 
 

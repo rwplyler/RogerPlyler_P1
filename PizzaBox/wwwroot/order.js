@@ -4,19 +4,19 @@ var total;
 var itemPrice = [0.00];
 var itemID = [0];
 var pendingItem = 0;
+var pendingRemoveItem = 0;
+
+var FirstName = "";
+var LastName = "";
 
 //item that will persist the Cart;
 var fullCart = [];
 
 class Cart{
-    constructor(cartItem, cartAmount,storeID) {
-        this.cartItem = cartItem;
-        this.cartAmount = cartAmount;
-        this.storeID = storeID;
-
-        this.getName = function () {
-            return "User's name: " + this.firstName + " " + this.lastName;
-        }
+    constructor(itemId, amount,storeId) {
+        this.itemId = itemId;
+        this.amount = amount;
+        this.storeId = storeId;
     }
 }
 
@@ -27,6 +27,7 @@ var storeInput = document.getElementById("stores");
 var itemInput = document.getElementById("items");
 var amountInput = document.getElementById("amount");
 var cartInput = document.getElementById("cart");
+var removeInput = document.getElementById("remove");
 
 function createStoreOptions() {
     fetch('api/Astore')
@@ -44,6 +45,9 @@ function findCustomer(FirstName, LastName) {
 
 function viewstores(id) {
     storenum = id;
+    itemInput.innerHTML = "";
+    fullCart = [];
+    cartInput.innerHTML = "";
     fetch('api/Ainventorydetail/' + id)
         .then(response => response.json())
         .then(data => { addToInventory(data); })
@@ -81,14 +85,29 @@ function addToCart(amount) {
     fullCart.push(newItem);
     console.log(fullCart);
     updateCart();
+    amountInput.innerHTML = "";
 
 }
 
 function updateCart() {
     
     for (i = 0; i < fullCart.length; i++) {
-        cartInput.add(new Option(fullCart[i].cartItem, i));
+        cartInput.add(new Option(fullCart[i].itemId, i));
         }
 
+}
+
+function pendingRemove(cartID) {
+    console.log("cart ID " + cartID);
+    var tempItem = fullCart[cartID];
+    pendingRemoveItem = cartID;
+    for (i = 0; i <=tempItem.amount ; i++) {
+        removeInput.add(new Option(i, i));
+    }
+
+}
+
+function submitOrder() {
+    
 }
 

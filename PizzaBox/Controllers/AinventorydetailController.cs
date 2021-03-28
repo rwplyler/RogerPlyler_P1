@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Models;
 using Repository.Data;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,13 @@ namespace PizzaBox.Controllers
         public IActionResult GetStoreItemInventory(int id, int storeid)
         {
             return Ok(inventorydetaildata.GetInventoryItem(id, storeid));
+        }
+
+        [HttpGet]
+        [Route("api/[controller]/{itemid}/{storeid}/{amount}/{orderid}")]
+        public IActionResult SubmitItemsToOrder(int itemid,int storeid,int amount,int orderid)
+        {
+            return Ok();
         }
 
     }

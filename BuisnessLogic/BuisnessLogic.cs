@@ -5,10 +5,11 @@ using System.Text;
 
 namespace BuisnessLogic
 {
-    class VisualLogic
+    public class BuisnessLogic
     {
-        IOrderData orderData;
-        IOrderDetail orderDetail;
         
+        
+
+       
     }
 }

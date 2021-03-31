@@ -12,8 +12,8 @@ var LastName = "";
 //item that will persist the Cart;
 var fullCart = [];
 
-class Cart{
-    constructor(itemId, amount,storeId) {
+class Cart {
+    constructor(itemId, amount, storeId) {
         this.itemId = itemId;
         this.amount = amount;
         this.storeId = storeId;
@@ -29,19 +29,62 @@ var amountInput = document.getElementById("amount");
 var cartInput = document.getElementById("cart");
 var removeInput = document.getElementById("remove");
 
+//Documents Sections
+
+var customerView = document.getElementById("CustomerSection");
+var storeView = document.getElementById("StoreSection");
+var itemView = document.getElementById("ItemSection");
+var cartView = document.getElementById("CartSection");
+
+
+
+function viewCustomers() {
+    
+    customerView.style.display = "block";
+    storeView.style.display = "none";
+    itemView.style.display = "none";
+    cartView.style.display = "none";
+}
+viewCustomers();
+function viewStores() {
+    customerView.style.display = "none";
+    storeView.style.display = "block";
+    itemView.style.display = "none";
+    cartView.style.display = "none";
+}
+
+function viewItems() {
+    customerView.style.display = "none";
+    storeView.style.display = "none";
+    itemView.style.display = "block";
+    cartView.style.display = "none";
+}
+
+function viewCart() {
+    customerView.style.display = "none";
+    storeView.style.display = "none";
+    itemView.style.display = "none";
+    cartView.style.display = "block";
+}
+
+
+
 function createStoreOptions() {
     fetch('api/Astore')
         .then(response => response.json())
-        .then(data => { data.forEach(store => storeInput.add(new Option(store.storeName,store.id))); });
-           
+        .then(data => { data.forEach(store => storeInput.add(new Option(store.storeName, store.id))); });
+
 }
 createStoreOptions();
 
-function findCustomer(FirstName, LastName) {
-    fetch('api/Acustomer/' + FirstName + '/' + LastName)
-        .then(response => response.json())
+ async function findCustomer(FirstName, LastName) {
+   await fetch('api/Acustomer/' + FirstName + '/' + LastName)
+       .then(response => response.json())
         .then(data => { console.log(data); customerID = data.id; });
+    console.log(customerID);
 }
+
+
 
 function viewstores(id) {
     storenum = id;
@@ -51,7 +94,7 @@ function viewstores(id) {
     fetch('api/Ainventorydetail/' + id)
         .then(response => response.json())
         .then(data => { addToInventory(data); })
-} 
+}
 
 function addToInventory(stock) {
     stock.forEach(item => {
@@ -69,7 +112,7 @@ function pendingCart(itemNum) {
     pendingItem = itemNum;
     var alreadyInCart = 0;
     for (i = 0; i < fullCart.length; i++) {
-        console.log("cartID " +fullCart[i].itemId);
+        console.log("cartID " + fullCart[i].itemId);
         if (itemNum == fullCart[i].itemId) {
             alreadyInCart = fullCart[i].amount;
         }
@@ -84,16 +127,15 @@ function pendingCart(itemNum) {
                 amountInput.add(new Option(i, i));
             }
         });
-    
-    
+
+
 }
 
 function addToCart(amount) {
     var newItem = new Cart(pendingItem, amount, storenum);
     var inCartAlready = -1;
     for (i = 0; i < fullCart.length; i++) {
-        if (pendingItem == fullCart[i].itemId)
-        {
+        if (pendingItem == fullCart[i].itemId) {
             console.log("Found in cart");
             inCartAlready = i;
         }
@@ -113,7 +155,7 @@ function updateCart() {
     cartInput.innerHTML = "";
     for (i = 0; i < fullCart.length; i++) {
         cartInput.add(new Option(fullCart[i].itemId, i));
-        }
+    }
 
 }
 
@@ -121,7 +163,7 @@ function pendingRemove(cartID) {
     console.log("cart ID " + cartID);
     var tempItem = fullCart[cartID];
     pendingRemoveItem = cartID;
-    for (i = 0; i <=tempItem.amount ; i++) {
+    for (i = 0; i <= tempItem.amount; i++) {
         removeInput.add(new Option(i, i));
     }
 
@@ -143,4 +185,3 @@ function submitCart(orderNum) {
             .then(data => { console.log(data); })
     });
 }
-

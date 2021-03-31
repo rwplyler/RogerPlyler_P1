@@ -3,14 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    
+    <link rel="stylesheet" href="Project1.css" />
 </head>
 <body>
-
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="order.html">Shop</a>
+        <a class="active" href="#contact">View Order</a>
+    </div>
     <form onsubmit="viewstoreorders(this.chooseStore.value);return false;">
-        <label for="stores" >Select a store to view</label>
+        <label for="stores">Select a store to view</label>
         <select id="stores" name="chooseStore">
-            
         </select>
         <input type="submit" value="submit">
     </form>

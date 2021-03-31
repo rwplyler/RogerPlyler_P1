@@ -5,21 +5,21 @@ createStoreOptions();
 function displayOrders(orders) {
     console.log(orders);
     var display = "";
-
+    outputFeild.innerHTML = "";
      fetch('api/AorderDetail/' + orders.orderId)
          .then(response => response.json())
-         .then(data => { displayItems(orders, data);});
+         .then(data => { displayItems(orders, data); console.log(orders); console.log(data);});
 
     
 
 }
 
 function displayItems(order, items) {
-    outputFeild.innerHTML += "<br>Order " + order.orderId;
-
+    outputFeild.innerHTML += "<br>Order " + order.orderId + "order date" + order.orderTime;
+    
     for (i = 0; i < items.length; i++) {
         console.log(items[i]);
-        outputFeild.innerHTML += "<br>       Item #" + items[i].itemId;
+        outputFeild.innerHTML += "<br>Item #" + items[i].itemId;
     }
 
 }

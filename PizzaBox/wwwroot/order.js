@@ -80,11 +80,22 @@ function createStoreOptions() {
 }
 createStoreOptions();
 
- async function findCustomer(FirstName, LastName) {
-   await fetch('api/Acustomer/' + FirstName + '/' + LastName)
-       .then(response => response.json())
-        .then(data => { console.log(data); customerID = data.id; });
-    console.log(customerID);
+async function findCustomer(FirstName, LastName) {
+    if (FirstName != "" && LastName != "") {
+        await fetch('api/Acustomer/' + FirstName + '/' + LastName)
+            .then(response => { if (response.ok) { response.json(); } })
+            .then(data => {
+                if (data == null) {
+                    alert("null");
+                } else {
+                    console.log(data);
+                    customerID = data.id;
+                }
+
+            });
+    }
+        console.log(customerID);
+
 }
 
 
@@ -146,7 +157,8 @@ function addToCart(amount) {
     if (inCartAlready == -1) {
         fullCart.push(newItem);
     } else {
-        fullCart[inCartAlready].amount += amount;
+        var tempAmount = parseInt(fullCart[inCartAlready].amount)
+        fullCart[inCartAlready].amount = parseInt(amount) + tempAmount;
     }
     console.log(fullCart);
     updateCart();
@@ -195,18 +207,40 @@ function removeFromCart(amountToRemove) {
 }
 
 function submitOrder() {
-    fetch('api/aorder/' + customerID + '/' + storenum + '/' + total)
-        .then(response => response.json())
-        .then(data => { console.log(data); submitCart(data.orderId); });
+    if (customerID <= 0 || customerID == null || fullCart.length == 0) {
+        alert("Please log in");
+    } else {
+        fetch('api/aorder/' + customerID + '/' + storenum + '/' + total)
+            .then(response => response.json())
+            .then(data => { console.log(data); submitCart(data.orderId); });
+    }
 
 }
 
 function submitCart(orderNum) {
+    
     console.log(orderNum);
     fullCart.forEach(item => {
         console.log(item);
-        fetch('api/aorderDetail/submit/' + orderNum + '/' + item.itemId + '/' + item.amount)
+       fetch('api/aorderDetail/submit/' + orderNum + '/' + item.itemId + '/' + item.amount)
             .then(response => response.json())
             .then(data => { console.log(data); })
     });
+}
+
+async function validateCart() {
+    var isvalid = true
+    for (i = 0; i < fullCart.length; i++) {
+        
+        await fetch('api/ainventorydetail/validate/' + fullCart[i].itemId + "/" + fullCart[i].storeId + "/" + fullCart[i].amount)
+            .then(response => response.json())
+            .then(data => { console.log(data); if (data == false) { isvalid = false; } })
+    }
+    console.log("is valid" + isvalid);
+    if (isvalid) {
+        submitOrder();
+    } else {
+        alert("order is no longer valid");
+    }
+    
 }

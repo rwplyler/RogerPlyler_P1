@@ -66,8 +66,8 @@
             </select>
             <input type="submit" value="submit">
         </form>
-
-        <form onsubmit="submitOrder();return false;">
+        <!--onsubmit() needs to be here at the end if validateCart doesn work-->
+        <form onsubmit="validateCart(); return false;">
             <label for="remove">Submit Order</label>
             <input type="submit" name="order" />
         </form>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
+using BuisnessLogic;
 using Repository.Data;
 using System;
 using System.Collections.Generic;
@@ -32,18 +33,22 @@ namespace PizzaBox.Controllers
         }
 
         [HttpGet]
+        [Route("api/[controller]/validate/{itemid}/{storeid}/{amount}")]
+        public IActionResult ValidateCart(int itemid, int storeid, int amount)
+        {
+            Logic buis = new Logic();
+            var isValid = buis.ValidateOrderAmount(itemid, storeid, amount);
+            return Ok(isValid);
+        }
+
+
+        [HttpGet]
         [Route("api/[controller]/{id}/{storeid}")]
         public IActionResult GetStoreItemInventory(int id, int storeid)
         {
             return Ok(inventorydetaildata.GetInventoryItem(id, storeid));
         }
 
-        [HttpGet]
-        [Route("api/[controller]/{itemid}/{storeid}/{amount}/{orderid}")]
-        public IActionResult SubmitItemsToOrder(int itemid,int storeid,int amount,int orderid)
-        {
-            return Ok();
-        }
 
     }
 }

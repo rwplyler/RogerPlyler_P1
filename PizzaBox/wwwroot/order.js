@@ -29,12 +29,15 @@ var amountInput = document.getElementById("amount");
 var cartInput = document.getElementById("cart");
 var removeInput = document.getElementById("remove");
 
+var totalText = document.getElementById("TotalText");
+
 //Documents Sections
 
 var customerView = document.getElementById("CustomerSection");
 var storeView = document.getElementById("StoreSection");
 var itemView = document.getElementById("ItemSection");
 var cartView = document.getElementById("CartSection");
+
 
 
 
@@ -150,13 +153,29 @@ function addToCart(amount) {
     amountInput.innerHTML = "";
 
 }
+//old one just in case
+//function updateCart() {
+//    cartInput.innerHTML = "";
+//    for (i = 0; i < fullCart.length; i++) {
+//        cartInput.add(new Option(fullCart[i].itemId, i));
+//    }
 
-function updateCart() {
+//}
+
+async function updateCart() {
     cartInput.innerHTML = "";
+    total = 0;
     for (i = 0; i < fullCart.length; i++) {
-        cartInput.add(new Option(fullCart[i].itemId, i));
+        await fetch('api/anitem/' + fullCart[i].itemId)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                total += fullCart[i].amount * data.price;
+                cartInput.add(new Option(fullCart[i].itemId + " " + data.itemName + " " + fullCart[i].amount * data.price, i));
+            })
+        
     }
-
+    totalText.innerHTML = "$" + total;
 }
 
 function pendingRemove(cartID) {
@@ -167,6 +186,12 @@ function pendingRemove(cartID) {
         removeInput.add(new Option(i, i));
     }
 
+}
+
+function removeFromCart(amountToRemove) {
+    fullCart[cartID].amount -= amountToRemove;
+    removeInput.innerHTML = "";
+    updateCart();
 }
 
 function submitOrder() {

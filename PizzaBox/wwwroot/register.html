@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="Project1.css" />
+</head>
+<body>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="order.html">Shop</a>
+        <a class="active" href="#contact">View Order</a>
+    </div>
+
+    <form onsubmit="register(this.FName.value, this.LName.value); return false;">
+        <label for="stores">Enter First Name</label>
+        <input type="text" name="FName"><br><br>
+        <label for="stores">Enter Last Name</label>
+        <input type="text" name="LName"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script src="register.js"></script>
+</body>
+</html>

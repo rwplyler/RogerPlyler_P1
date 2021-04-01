@@ -1,62 +1,81 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="Project1.css" />
     <meta charset="utf-8" />
     <title></title>
-    
 </head>
 <body>
+    <div class="topnav">
+        <a href="order.html">Home</a>
+        <a class="active" href="#news">Shop</a>
+        <a href="vieworder.html">View Order</a>
+    </div>
 
-    <div id="select">
+    <div class="topnav">
+        <a onclick="viewCustomers(); return false;">Login</a>
+        <a onclick="viewStores(); return false;">Store</a>
+        <a onclick="viewItems(); return false;">Items</a>
+        <a onclick="viewCart(); return false;">Cart</a>
+    </div>
+    <div id="CustomerSection">
         <form onsubmit="findCustomer(this.FName.value, this.LName.value); return false;">
+            <label for="stores">Enter First Name</label>
             <input type="text" name="FName"><br><br>
+            <label for="stores">Enter Last Name</label>
             <input type="text" name="LName"><br><br>
             <input type="submit" value="Submit">
         </form>
     </div>
     <div id="output"></div>
 
-    <form onsubmit="viewstores(this.chooseStore.value);return false;">
-        <label for="stores">Select a store to view</label>
-        <select id="stores" name="chooseStore">
-        </select>
-        <input type="submit" value="submit">
-    </form>
+    <div id="StoreSection">
+        <form onsubmit="viewstores(this.chooseStore.value);return false;">
+            <label for="stores">Select a store to view</label>
+            <select id="stores" name="chooseStore">
+            </select>
+            <input type="submit" value="submit">
+        </form>
+    </div>
 
 
+    <div id="ItemSection">
+        <form onsubmit="pendingCart(this.addItem.value);return false;">
+            <label for="items">Add Item To Cart</label>
+            <select id="items" name="addItem">
+            </select>
+            <input type="submit" value="submit">
+        </form>
+        <form onsubmit="addToCart(this.amount.value);return false;">
+            <label for="amount">Add Item To Cart</label>
+            <select id="amount" name="amount">
+            </select>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <div id="CartSection">
+        <form onsubmit="pendingRemove(this.removeItem.value);return false;">
+            <label for="cart">Add Item To Cart</label>
+            <select id="cart" name="removeItem">
+            </select>
+            <input type="submit" value="submit">
+        </form>
+        <form onsubmit="removeFromCart(this.remove.value);return false;">
+            <label for="remove">Add Item To Cart</label>
+            <select id="remove" name="remove">
+            </select>
+            <input type="submit" value="submit">
+        </form>
+        <!--onsubmit() needs to be here at the end if validateCart doesn work-->
+        <form onsubmit="validateCart(); return false;">
+            <label for="remove">Submit Order</label>
+            <input type="submit" name="order" />
+        </form>
 
-    <form onsubmit="pendingCart(this.addItem.value);return false;">
-        <label for="items">Add Item To Cart</label>
-        <select id="items" name="addItem">
-        </select>
-        <input type="submit" value="submit">
-    </form>
-    <form onsubmit="addToCart(this.amount.value);return false;">
-        <label for="amount">Add Item To Cart</label>
-        <select id="amount" name="amount">
-        </select>
-        <input type="submit" value="submit">
-    </form>
-
-    <form onsubmit="pendingRemove(this.removeItem.value);return false;">
-        <label for="cart">Add Item To Cart</label>
-        <select id="cart" name="removeItem">
-        </select>
-        <input type="submit" value="submit">
-    </form>
-    <form onsubmit="removeFromCart(this.remove.value);return false;">
-        <label for="remove">Add Item To Cart</label>
-        <select id="remove" name="remove">
-        </select>
-        <input type="submit" value="submit">
-    </form>
-
-    <form onsubmit="submitOrder();return false;">
-        <label for="remove">Submit Order</label>
-        <input type="submit" name="order" />
-    </form>
+    </div>
+    <b id="TotalText"></b>
 
 
-    <script src="order.js"></script>
+        <script src="order.js"></script>
 </body>
 </html>

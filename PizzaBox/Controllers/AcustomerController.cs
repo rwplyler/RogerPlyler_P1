@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuisnessLogic;
 
 namespace PizzaBox.Controllers
 {
@@ -45,28 +46,36 @@ namespace PizzaBox.Controllers
             {
                 return Ok(customer);
             }
-            return NotFound("Customer Not Found");
+            Acustomer empty = new Acustomer() { Id = 0 };
+
+            return Ok(empty);
         }
 
         [HttpPost]
         [Route("api/[controller]")]
         public IActionResult GetCustomer(Acustomer customer)
         {
+            Logic buis = new Logic();
             //return Ok(customerData.GetCustomers());
             var checkCust = customerData.GetCustomer(customer);
-            if(checkCust != null)
+            if(checkCust == null)
             {
-                return Ok(checkCust);
+                return Ok(buis.AddNewCustomer(customer));
             }
-            return NotFound("Customer Doesn't Exist");
+            else
+            {
+                Acustomer empty = new Acustomer() { Id = 0 };
+                return Ok(empty);
+            }
         }
 
         [HttpDelete]
         [Route("api/[controller]/{id}")]
         public IActionResult DeleteEmployee(int id)
         {
+            
             var cust = customerData.DeleteCustomer(id);
-            if(cust != null)
+            if(cust == null)
             {
                 return Ok();
             }

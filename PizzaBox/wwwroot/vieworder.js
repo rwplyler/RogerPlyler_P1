@@ -2,11 +2,11 @@
 var storeInput = document.getElementById("stores");
 
 createStoreOptions();
-function displayOrders(orders) {
+async function displayOrders(orders) {
     console.log(orders);
     var display = "";
     outputFeild.innerHTML = "";
-     fetch('api/AorderDetail/' + orders.orderId)
+    await fetch('api/AorderDetail/' + orders.orderId)
          .then(response => response.json())
          .then(data => { displayItems(orders, data); console.log(orders); console.log(data);});
 
@@ -47,5 +47,14 @@ function createStoreOptions() {
 function findCustomer(FirstName, LastName) {
     fetch('api/Acustomer/' + FirstName + '/' + LastName)
         .then(response => response.json())
-        .then(data => { viewcustomerorders(data.id); });
+        .then(data => {
+            if (data.id == 0) {
+                alert("Customer Not");
+            }
+            else {
+                viewcustomerorders(data.id);
+            }
+        });
 }
+            
+

@@ -83,10 +83,10 @@ createStoreOptions();
 async function findCustomer(FirstName, LastName) {
     if (FirstName != "" && LastName != "") {
         await fetch('api/Acustomer/' + FirstName + '/' + LastName)
-            .then(response => { if (response.ok) { response.json(); } })
+            .then(response => response.json() )
             .then(data => {
-                if (data == null) {
-                    alert("null");
+                if (data.id == 0) {
+                    alert("Customer Not Found");
                 } else {
                     console.log(data);
                     customerID = data.id;
@@ -207,6 +207,7 @@ function removeFromCart(amountToRemove) {
 }
 
 function submitOrder() {
+    alert("Order Has Been Submitted")
     if (customerID <= 0 || customerID == null || fullCart.length == 0) {
         alert("Please log in");
     } else {

@@ -13,7 +13,7 @@ namespace Repository.Data
 
         public Acustomer AddCustomer(Acustomer customer)
         {
-            context.Acustomers.Add(customer);
+            
             return customer;
         }
 

@@ -5,10 +5,16 @@ namespace TestPizzaBox
 {
     public class UnitTest1
     {
-        [Fact]
-        public void Test1()
+        [Theory]
+        [InlineData(1, 1)]
+        [InlineData(2, 2)]
+        public void ToppingName(int expected, int testID)
         {
+            
 
+            // assert
+            Assert.Equal(expected, testID);
         }
+        
     }
 }

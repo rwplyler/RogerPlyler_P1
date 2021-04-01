@@ -39,6 +39,15 @@ namespace BuisnessLogic
             return order;
         }
 
+        public Acustomer AddNewCustomer(Acustomer cust)
+        {
+
+            cust.Id = ((context.Acustomers.Any(c => c.Id == 1)) ? context.Acustomers.Max(o => o.Id) + 1 : 1);
+            context.Acustomers.Add(cust);
+            context.SaveChanges();
+            return cust;
+        }
+
         /// <summary>
         /// Creates new details of an order using the price and the amoung 
         /// </summary>

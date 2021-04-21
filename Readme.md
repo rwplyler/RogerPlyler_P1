@@ -1,5 +1,5 @@
 
-List of features ready and TODOs for future development
+List of features ready 
 * Able to Update Database
 * Has the Database alter the Web Site
 * API calls to get and put
